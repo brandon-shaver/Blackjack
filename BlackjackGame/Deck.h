@@ -7,7 +7,17 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "Card.h"
 
-@interface Deck : NSObject
+@interface Deck : NSObject{
+    
+    NSMutableArray *cardDeck;
+}
+
+-(void) shuffleCards;
+
+-(Card*) draw;
+
+
 
 @end

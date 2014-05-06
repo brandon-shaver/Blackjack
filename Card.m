@@ -20,11 +20,11 @@
  
  */
 
--(id) initCard:(NSInteger *)cNumber suit:(Suit)cSuit{
+-(id) initCard:(int)cNumber suit:(Suit)cSuit{
     
     if (self = [super init]){ //object is NSObject
         
-        cardValue = *cNumber; //assign card number
+        cardValue = cNumber; //assign card number
         cardSuit = cSuit; //assign card suite
         
     }
