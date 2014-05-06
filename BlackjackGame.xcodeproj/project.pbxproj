@@ -22,6 +22,7 @@
 		8C51A1DC19186E630078D4A9 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8C51A1DA19186E630078D4A9 /* InfoPlist.strings */; };
 		8C51A1DE19186E630078D4A9 /* BlackjackGameTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C51A1DD19186E630078D4A9 /* BlackjackGameTests.m */; };
 		8C51A1E9191879CB0078D4A9 /* Card.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C51A1E8191879CB0078D4A9 /* Card.m */; };
+		B402670A1918A68A008A76D5 /* Deck.m in Sources */ = {isa = PBXBuildFile; fileRef = B40267091918A68A008A76D5 /* Deck.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,6 +57,8 @@
 		8C51A1DD19186E630078D4A9 /* BlackjackGameTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BlackjackGameTests.m; sourceTree = "<group>"; };
 		8C51A1E7191879CB0078D4A9 /* Card.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Card.h; path = ../Card.h; sourceTree = "<group>"; };
 		8C51A1E8191879CB0078D4A9 /* Card.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Card.m; path = ../Card.m; sourceTree = "<group>"; };
+		B40267081918A68A008A76D5 /* Deck.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Deck.h; sourceTree = "<group>"; };
+		B40267091918A68A008A76D5 /* Deck.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Deck.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,8 +118,8 @@
 		8C51A1B819186E630078D4A9 /* BlackjackGame */ = {
 			isa = PBXGroup;
 			children = (
-				8C51A1EA191890C10078D4A9 /* Deck.h */,
-				8C51A1EB191890C10078D4A9 /* Deck.m */,
+				B40267081918A68A008A76D5 /* Deck.h */,
+				B40267091918A68A008A76D5 /* Deck.m */,
 				8C51A1E7191879CB0078D4A9 /* Card.h */,
 				8C51A1E8191879CB0078D4A9 /* Card.m */,
 				8C51A1C119186E630078D4A9 /* AppDelegate.h */,
@@ -235,62 +238,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B40265BF191890E3008A76D5 /* spade05.png in Resources */,
-				B40265C4191890E3008A76D5 /* spade10.png in Resources */,
 				8C51A1CB19186E630078D4A9 /* Images.xcassets in Resources */,
-				B40265A0191890E3008A76D5 /* club13.png in Resources */,
-				B40265B2191890E3008A76D5 /* heart05.png in Resources */,
-				B40265B4191890E3008A76D5 /* heart07.png in Resources */,
-				B40265AC191890E3008A76D5 /* diamond12.png in Resources */,
 				8C51A1BD19186E630078D4A9 /* InfoPlist.strings in Resources */,
-				B40265A3191890E3008A76D5 /* diamond03.png in Resources */,
-				B40265C3191890E3008A76D5 /* spade09.png in Resources */,
-				B40265A4191890E3008A76D5 /* diamond04.png in Resources */,
 				8C51A1C619186E630078D4A9 /* Main.storyboard in Resources */,
-				B4026599191890E3008A76D5 /* club06.png in Resources */,
-				B40265B5191890E3008A76D5 /* heart08.png in Resources */,
-				B40265A9191890E3008A76D5 /* diamond09.png in Resources */,
-				B4026596191890E3008A76D5 /* club03.png in Resources */,
-				B40265C1191890E3008A76D5 /* spade07.png in Resources */,
-				B402659A191890E3008A76D5 /* club07.png in Resources */,
-				B40265B3191890E3008A76D5 /* heart06.png in Resources */,
-				B40265B9191890E3008A76D5 /* heart12.png in Resources */,
-				B40265A1191890E3008A76D5 /* diamond01.png in Resources */,
-				B40265B1191890E3008A76D5 /* heart04.png in Resources */,
-				B402659F191890E3008A76D5 /* club12.png in Resources */,
-				B4026594191890E3008A76D5 /* club01.png in Resources */,
-				B40265AA191890E3008A76D5 /* diamond10.png in Resources */,
-				B4026593191890E3008A76D5 /* closed.png in Resources */,
-				B40265A8191890E3008A76D5 /* diamond08.png in Resources */,
-				B40265C5191890E3008A76D5 /* spade11.png in Resources */,
-				B402659D191890E3008A76D5 /* club10.png in Resources */,
-				B40265BE191890E3008A76D5 /* spade04.png in Resources */,
-				B40265BB191890E3008A76D5 /* spade01.png in Resources */,
-				B40265AE191890E3008A76D5 /* heart01.png in Resources */,
-				B4026595191890E3008A76D5 /* club02.png in Resources */,
-				B40265AF191890E3008A76D5 /* heart02.png in Resources */,
-				B4026597191890E3008A76D5 /* club04.png in Resources */,
-				B40265B6191890E3008A76D5 /* heart09.png in Resources */,
-				B40265BD191890E3008A76D5 /* spade03.png in Resources */,
-				B4026598191890E3008A76D5 /* club05.png in Resources */,
-				B40265A5191890E3008A76D5 /* diamond05.png in Resources */,
-				B402659B191890E3008A76D5 /* club08.png in Resources */,
-				B40265BA191890E3008A76D5 /* heart13.png in Resources */,
-				B40265A7191890E3008A76D5 /* diamond07.png in Resources */,
-				B402659E191890E3008A76D5 /* club11.png in Resources */,
-				B40265B0191890E3008A76D5 /* heart03.png in Resources */,
-				B40265A6191890E3008A76D5 /* diamond06.png in Resources */,
-				B40265B7191890E3008A76D5 /* heart10.png in Resources */,
-				B40265C0191890E3008A76D5 /* spade06.png in Resources */,
-				B40265C6191890E3008A76D5 /* spade12.png in Resources */,
-				B40265BC191890E3008A76D5 /* spade02.png in Resources */,
-				B40265C2191890E3008A76D5 /* spade08.png in Resources */,
-				B40265A2191890E3008A76D5 /* diamond02.png in Resources */,
-				B40265AB191890E3008A76D5 /* diamond11.png in Resources */,
-				B40265B8191890E3008A76D5 /* heart11.png in Resources */,
-				B40265AD191890E3008A76D5 /* diamond13.png in Resources */,
-				B402659C191890E3008A76D5 /* club09.png in Resources */,
-				B40265C7191890E3008A76D5 /* spade13.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -309,7 +259,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8C51A1EC191890C10078D4A9 /* Deck.m in Sources */,
+				B402670A1918A68A008A76D5 /* Deck.m in Sources */,
 				8C51A1C919186E630078D4A9 /* ViewController.m in Sources */,
 				8C51A1C319186E630078D4A9 /* AppDelegate.m in Sources */,
 				8C51A1BF19186E630078D4A9 /* main.m in Sources */,
