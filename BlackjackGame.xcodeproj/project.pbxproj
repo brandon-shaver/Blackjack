@@ -23,6 +23,7 @@
 		8C51A1DE19186E630078D4A9 /* BlackjackGameTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C51A1DD19186E630078D4A9 /* BlackjackGameTests.m */; };
 		8C51A1E9191879CB0078D4A9 /* Card.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C51A1E8191879CB0078D4A9 /* Card.m */; };
 		8C51A1EF1918A95F0078D4A9 /* Hand.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C51A1EE1918A95F0078D4A9 /* Hand.m */; };
+		8C51A1F21918B8E80078D4A9 /* GameModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C51A1F11918B8E80078D4A9 /* GameModel.m */; };
 		B402670A1918A68A008A76D5 /* Deck.m in Sources */ = {isa = PBXBuildFile; fileRef = B40267091918A68A008A76D5 /* Deck.m */; };
 		B40267411918A82D008A76D5 /* closed.png in Resources */ = {isa = PBXBuildFile; fileRef = B402670C1918A82D008A76D5 /* closed.png */; };
 		B40267421918A82D008A76D5 /* club01.png in Resources */ = {isa = PBXBuildFile; fileRef = B402670D1918A82D008A76D5 /* club01.png */; };
@@ -113,6 +114,8 @@
 		8C51A1E8191879CB0078D4A9 /* Card.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Card.m; path = ../Card.m; sourceTree = "<group>"; };
 		8C51A1ED1918A95F0078D4A9 /* Hand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Hand.h; sourceTree = "<group>"; };
 		8C51A1EE1918A95F0078D4A9 /* Hand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Hand.m; sourceTree = "<group>"; };
+		8C51A1F01918B8E80078D4A9 /* GameModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameModel.h; sourceTree = "<group>"; };
+		8C51A1F11918B8E80078D4A9 /* GameModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameModel.m; sourceTree = "<group>"; };
 		B40267081918A68A008A76D5 /* Deck.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Deck.h; sourceTree = "<group>"; };
 		B40267091918A68A008A76D5 /* Deck.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Deck.m; sourceTree = "<group>"; };
 		B402670C1918A82D008A76D5 /* closed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = closed.png; sourceTree = "<group>"; };
@@ -228,6 +231,8 @@
 		8C51A1B819186E630078D4A9 /* BlackjackGame */ = {
 			isa = PBXGroup;
 			children = (
+				8C51A1F01918B8E80078D4A9 /* GameModel.h */,
+				8C51A1F11918B8E80078D4A9 /* GameModel.m */,
 				8C51A1ED1918A95F0078D4A9 /* Hand.h */,
 				8C51A1EE1918A95F0078D4A9 /* Hand.m */,
 				B40267081918A68A008A76D5 /* Deck.h */,
@@ -490,6 +495,7 @@
 				8C51A1C319186E630078D4A9 /* AppDelegate.m in Sources */,
 				8C51A1BF19186E630078D4A9 /* main.m in Sources */,
 				8C51A1E9191879CB0078D4A9 /* Card.m in Sources */,
+				8C51A1F21918B8E80078D4A9 /* GameModel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
