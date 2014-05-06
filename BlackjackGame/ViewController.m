@@ -34,14 +34,14 @@
     _EveryView = [[NSMutableArray alloc] initWithCapacity:5];
     
     // Do any additional setup after loading the view, typically from a nib.
-    [[GameModel getGameModel]  addObserver:self forKeyPath:@"dealerHand"
+    [[GameModel getGameModel]  addObserver:self forKeyPath:@"dealer"
                                              options:NSKeyValueObservingOptionNew context:NULL];
-    [[GameModel getGameModel]  addObserver:self forKeyPath:@"playerHand"
+    [[GameModel getGameModel]  addObserver:self forKeyPath:@"player"
                                              options:NSKeyValueObservingOptionNew context:NULL];
     [[GameModel getGameModel]  addObserver:self forKeyPath:@"totalPlays"
                                              options:NSKeyValueObservingOptionNew context:NULL];
     
-    [[GameModel getGameModel] setup];
+    [[GameModel getGameModel] initializeRound];
 
 }
 
@@ -93,6 +93,8 @@
     [_DoubleButton setEnabled:YES];
     [_SplitButton setEnabled:NO];
     [_NewDealButton setEnabled:NO];
+    
+    [[GameModel getGameModel] dealNewHand];
 }
 
 -(void) gameOver{
@@ -101,6 +103,8 @@
     [_DoubleButton setEnabled:NO];
     [_SplitButton setEnabled:NO];
     [_NewDealButton setEnabled:YES];
+    
+    [[GameModel getGameModel] playerSplits];
 }
 
 -(void) placeHand:(Hand *)hand atYPos:(NSInteger) yPos;
@@ -114,7 +118,7 @@
         CGRect arect = CGRectMake( (i*40)+20, yPos, 71, 96);
         imageView.frame = arect;
         
-        [_allImageViews addObject:imageView];
+        [_EveryView addObject:imageView];
         
         [self.view addSubview:imageView];
     }
@@ -124,13 +128,13 @@
 -(void) placeDealerHand:(Hand *)hand;
 {
     [self placeHand:hand atYPos:80];
-    _DealerLabel.text = [NSString stringWithFormat:@"Dealer (%d)",[hand getCardPoint]];
+    _DealerLabel.text = [NSString stringWithFormat:@"Dealer (%ld)",(long)[hand getHandPoints]];
 }
 
 -(void) placePlayerHand:(Hand *)hand;
 {
     [self placeHand:hand atYPos:290];
-    _PlayerLabel.text = [NSString stringWithFormat:@"Player (%d)",[hand getCardPoint]];
+    _PlayerLabel.text = [NSString stringWithFormat:@"Player (%ld)",(long)[hand getHandPoints]];
     
 }
 
@@ -140,17 +144,17 @@
                        context:(void *)context
 {
     
-    if ([keyPath isEqualToString:@"dealerHand"])
+    if ([keyPath isEqualToString:@"dealer"])
     {
-        [self placeDealerHand: (Hand *)[object dealerHand]];
+        [self placeDealerHand: (Hand *)[object dealer]];
     } else
-        if ([keyPath isEqualToString:@"playerHand"])
+        if ([keyPath isEqualToString:@"player"])
         {
-            [self placePlayerHand: (Hand *)[object playerHand]];
+            [self placePlayerHand: (Hand *)[object player]];
         }
         else if ([keyPath isEqualToString:@"totalPlays"])
         {
-            [self endGame];
+            [self gameOver];
         }
     
 }

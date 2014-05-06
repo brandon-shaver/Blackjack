@@ -7,9 +7,11 @@
 //
 
 #import "Hand.h"
+#import "Card.h"
 
 @implementation Hand
 
+@synthesize handClosed=_handClosed;
 /*
  
  ** Creates a new hand of size 2
@@ -20,10 +22,15 @@
     
     if (self = [super init]){
         self.cardsInHand = [[NSMutableArray alloc] initWithCapacity:2];
+        _handClosed = NO;
     }
     
     return (self);
     
+}
+
+-(NSInteger) numOfCards {
+    return ([self.cardsInHand count]);
 }
 
 /*
@@ -34,7 +41,15 @@
  */
 -(void) addCard: (Card *)card{
     
-    [self.cardsInHand addObject: card];
+    if ((_handClosed==NO) | ( [self numOfCards]==0))
+    {
+        [self.cardsInHand addObject:card];
+    }
+    else
+    {
+        card.cardFlipped=YES;
+        [self.cardsInHand addObject:card];
+    }
     
 }
 
@@ -44,32 +59,28 @@
  **
  
  */
--(int) getHandPoints{
+-(NSInteger) getHandPoints{
     
-    int points = 0;
+    NSInteger points = 0;
+    NSInteger numberOfAces = 0;
     
-    for (Card *currentCard in self.cardsInHand){
+    for (Card *currentCard in self.cardsInHand) {
+        if (currentCard.getCardPoint == 11)
+            numberOfAces = numberOfAces +1;
+        
         points = points + [currentCard getCardPoint];
+        
     }
     
+    while (points > 21 && numberOfAces>0)
+    {
+        points = points - 10;
+        numberOfAces=numberOfAces-1;
+    }
     return points;
     
 }
 
-/*
- 
- ** Count the number of cards in the hand
- **
- 
- */
--(int) numOfCards{
-    
-    int num  = [self.cardsInHand count];
-    
-    return num;
-    
-    
-}
 
 /*
  
@@ -77,13 +88,25 @@
  ** Get the card at a index in the hand
  
  */
--(Card*) getCard: (int) index{
-    
-    
-    Card *card = [self.cardsInHand objectAtIndex:index];
-    
-    return card;
-    
+-(Card *) getCard:(NSInteger) index
+{
+    return ([self.cardsInHand objectAtIndex:index]);
 }
+
+-(BOOL) handClosed
+{
+    return _handClosed;
+}
+
+-(void) setHandClosed:(BOOL)aHandClosed
+{
+    
+    if (aHandClosed == NO) {
+        for( Card *c in self.cardsInHand)
+            c.cardFlipped = NO;
+    }
+    _handClosed = aHandClosed;
+}
+
 
 @end

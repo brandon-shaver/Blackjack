@@ -19,15 +19,16 @@
 
 
 @property NSMutableArray *cardsInHand;
+@property BOOL handClosed;
 
 
 -(void) addCard: (Card *)card;
 
--(int) getHandPoints;
+-(NSInteger) getHandPoints;
 
--(int) numOfCards;
+-(NSInteger) numOfCards;
 
--(Card*) getCard: (int) index;
+-(Card*) getCard: (NSInteger) index;
 
 
 @end

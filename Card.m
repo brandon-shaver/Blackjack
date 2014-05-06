@@ -10,9 +10,9 @@
 
 @implementation Card
 
-@synthesize cardValue;
-@synthesize cardSuit;
-@synthesize cardFlipped;
+@synthesize cardValue = _cardValue;
+@synthesize cardSuit = _cardSuit;
+@synthesize cardFlipped = _cardFlipped;
 
 /*
  
@@ -25,9 +25,9 @@
     
     if (self = [super init]){ //object is NSObject
         
-        cardValue = cNumber; //assign card number
-        cardSuit = cSuit; //assign card suite
-        cardFlipped = NO;
+        _cardValue = cNumber; //assign card number
+        _cardSuit = cSuit; //assign card suite
+        _cardFlipped = NO;
         
     }
     return self;
@@ -43,13 +43,16 @@
 
 -(NSInteger) getCardPoint{
     
-    if (cardValue == 1){ //ace is 1 or 11
-        return 11;
-    }else if (cardValue >= 10){
-        return 10;
-    }else{
-        return cardValue; //card is less than 10
+    if (_cardFlipped==YES)
+    {
+        return (0);
     }
+    else if (_cardValue>=10)
+        return (10);
+    else if (_cardValue==1)
+        return (11);
+    else
+        return (_cardValue);
 }
 
 /*
@@ -61,15 +64,24 @@
 
 -(NSString *) getCardSuit{
     
-    if (cardSuit == Spades){
-        return @"Spades";
-    }else if (cardSuit == Clubs){
-        return @"Clubs";
-    }else if (cardSuit == Hearts){
-        return @"Hearts";
-    }else{
-        return @"Diamonds";
+    switch (_cardSuit) {
+        case Hearts:
+            return @"Heart";
+            break;
+        case Spades:
+            return @"Spade";
+            break;
+        case Diamonds:
+            return @"Diamond";
+            break;
+        case Clubs:
+            return @"Club";
+            break;
+        default:
+            return nil;
+            break;
     }
+
 }
 
 /*
@@ -81,30 +93,34 @@
 
 -(NSString*) getCardPointString{
     
-    if (cardValue == 1){
-        return @"Ace";
-    }else if (cardValue == 11){
-        return @"Jack";
-    }else if (cardValue == 12){
-        return @"Queen";
-    }else if (cardValue == 13){
-        return @"King";
-    }else{
-        return [NSString stringWithFormat: @"%d", cardValue];
+    switch (_cardValue) {
+        case 1:
+            return @"Ace";
+            break;
+        case 11:
+            return @"Jack";
+            break;
+        case 12:
+            return @"Queen";
+            break;
+        case 13:
+            return @"King";
+            break;
+        default:
+            return [NSString stringWithFormat:@"%ld", (long)_cardValue];
+            break;
     }
     
 }
 
 -(NSString *) filename{
-    if (cardFlipped==YES)
+    if (_cardFlipped==YES)
         return @"closed.png";
     else
-        return [NSString stringWithFormat:@"%@%02d.png", [self getCardSuit], [self cardValue]];
+        return [NSString stringWithFormat:@"%@%02ld.png", [self getCardSuit], (long)[self cardValue]];
 }
 
--(NSString *) description {
-    return [NSString stringWithFormat:@"%@ %@ (pipValue = %d)", [self getCardSuit], [self getCardPointString], [self getCardPoint]];
-}
+
 
 
 @end

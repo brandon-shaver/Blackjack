@@ -7,6 +7,7 @@
 //
 
 #import "Deck.h"
+#import "Card.h"
 
 @implementation Deck{
     
@@ -24,8 +25,9 @@
         
         cardDeck = [[NSMutableArray alloc] init]; //create empty deck
         
-        for (int value = 1; value <= 13; value++){
-            for(int suit=0; suit <= 3; suit++){
+        for (int suit = 0; suit <= 3; suit++){
+            
+            for(int value = 1; value <= 13; value++){
                 
                 [cardDeck addObject:[[Card alloc] initCard:value suit:suit]];
             }
@@ -49,13 +51,13 @@
  */
 -(void) shuffleCards{
     
-    int cardAmount = [cardDeck count];
+    NSInteger cardAmount = [cardDeck count];
     
     for (int i=0; i<cardAmount; i++){
         
-        int elements = cardAmount - i;
+        NSInteger elements = cardAmount - i;
         
-        int n = (arc4random() % elements) + i;
+        NSInteger n = (arc4random() % elements) + i;
         
         [cardDeck exchangeObjectAtIndex:i withObjectAtIndex:n];
     }
@@ -71,7 +73,7 @@
 
 -(Card*) draw{
     
-    int numOfCards = [cardDeck count];
+    NSInteger numOfCards = [cardDeck count];
     
     if (numOfCards > 0){ //able to draw
         
