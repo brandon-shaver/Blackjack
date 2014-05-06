@@ -10,10 +10,10 @@
 
 @implementation GameModel
 
-@synthesize player = _player;
-@synthesize dealer = _dealer;
-@synthesize theDeck = _theDeck;
-@synthesize totalPlays = _totalPlays;
+@synthesize player;
+@synthesize dealer;
+@synthesize theDeck;
+@synthesize totalPlays;
 
 static GameModel* gameModel = nil;
 
@@ -26,11 +26,11 @@ static GameModel* gameModel = nil;
 -(id)init{
     
     if ((self = [super init])){
-        _theDeck = [[Deck alloc] init];
-        _player = [[Hand alloc] init];
-        _dealer = [[Hand alloc] init];
-        _dealer.handClosed = YES;
-        _totalPlays = 0;
+        
+        theDeck = [[Deck alloc] init];
+        player = [[Hand alloc] init];
+        dealer = [[Hand alloc] init];
+
     }
     return (self);
     
@@ -54,7 +54,7 @@ static GameModel* gameModel = nil;
 -(void)playerHits
 {
     [self willChangeValueForKey:@"player"];
-    [_player addCard:[theDeck draw]];
+    [player addCard:[theDeck draw]];
     [self didChangeValueForKey:@"player"];
     [self EndGameIfPlayerIsBust];
 }
@@ -65,74 +65,38 @@ static GameModel* gameModel = nil;
     [self dealerPlays];
 }
 
--(void)playerDoubles
-{
+-(void)playerDoubles{
     
 }
 
--(void)playerSplits
-{
+-(void)playerSplits{
  
 }
 
--(void) dealNewHand;
-{
-    _theDeck = nil;
-    _player = nil;
-    _dealer = nil;
-    _theDeck = [[Deck alloc] init];
-    _player = [[Hand alloc] init];
-    _dealer = [[Hand alloc] init];
-    _dealer.handClosed = YES;
-    [self initializeRound];
+-(void) dealNewHand{
+
 }
 
--(void)dealerHandDraws
-{
-    [self willChangeValueForKey:@"dealer"];
-    [_dealer addCard:[_theDeck draw]];
-    [self didChangeValueForKey:@"dealer"];
+-(void)dealerHandDraws{
+
 }
 
 -(void)dealerStartsTurn{
-    [self willChangeValueForKey:@"dealer"];
-    [_dealer setHandClosed:NO];
-    [self didChangeValueForKey:@"dealer"];
+ 
 }
 
--(void) EndGameIfPlayerIsBust
-{
-    if (_player.getHandPoints > 21)
-        [self gameEnds:Dealer];
+-(void) EndGameIfPlayerIsBust{
+
 }
 
--(void) gameEnds:(Winner) winner;
-{
-    self.totalPlays = self.totalPlays+1;
+-(void) gameEnds:(Winner) winner{
+  
 }
 
--(void)dealerPlays
-{
-    while (_dealer.getHandPoints < 17)
-    {
-        [self dealerHandDraws];
-        
-    }
+-(void)dealerPlays{
     
-    if (_dealer.getHandPoints > 21)
-        [self gameEnds:Player ];
-    else if (_dealer.getHandPoints > _player.getHandPoints)
-        [self gameEnds:Dealer];
-    else
-        [self gameEnds:Draw ];
 }
 
-+(GameModel *) getGameModel{
-    if (gameModel == nil){
-        gameModel = [[GameModel alloc] init];
-    }
-    return gameModel;
-}
 
 
 @end

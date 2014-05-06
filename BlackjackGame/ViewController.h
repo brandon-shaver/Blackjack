@@ -22,11 +22,13 @@
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *NewDealButton;
 @property NSMutableArray *EveryView;
 
+/*
 - (IBAction)HitCard:(id)sender;
 - (IBAction)StandHand:(id)sender;
 - (IBAction)DoubleHand:(id)sender;
 - (IBAction)SplitHand:(id)sender;
-- (IBAction)NewDeal:(id)sender;
+- (IBAction)NewDeal:(id)sender;*/
+ 
 
 
 @end

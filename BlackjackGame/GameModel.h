@@ -33,15 +33,15 @@ typedef enum {
 @property int totalPlays;
 
 -(void) initializeRound;
+/*
 -(void) playerHits;
 -(void) playerStands;
 -(void) playerDoubles;
 -(void) playerSplits;
 -(void) dealNewHand;
+*/
 
-
-
-+(GameModel *)getGameModel;
+//+(GameModel *)getGameModel;
 
 
 @end

@@ -10,9 +10,9 @@
 
 @implementation Card
 
-@synthesize cardValue = _cardValue;
-@synthesize cardSuit = _cardSuit;
-@synthesize cardFlipped = _cardFlipped;
+@synthesize cardValue;
+@synthesize cardSuit;
+@synthesize cardFlipped;
 
 /*
  
@@ -25,9 +25,9 @@
     
     if (self = [super init]){ //object is NSObject
         
-        _cardValue = cNumber; //assign card number
-        _cardSuit = cSuit; //assign card suite
-        _cardFlipped = NO;
+        cardValue = cNumber; //assign card number
+        cardSuit = cSuit; //assign card suite
+        cardFlipped = NO;
         
     }
     return self;
@@ -43,16 +43,14 @@
 
 -(NSInteger) getCardPoint{
     
-    if (_cardFlipped==YES)
-    {
+    if (cardFlipped==YES){
         return (0);
-    }
-    else if (_cardValue>=10)
+    } else if (cardValue>=10){
         return (10);
-    else if (_cardValue==1)
+    }else if (cardValue==1){
         return (11);
-    else
-        return (_cardValue);
+    }else
+        return (cardValue);
 }
 
 /*
@@ -64,18 +62,18 @@
 
 -(NSString *) getCardSuit{
     
-    switch (_cardSuit) {
+    switch (cardSuit) {
         case Hearts:
-            return @"Heart";
+            return @"heart";
             break;
         case Spades:
-            return @"Spade";
+            return @"spade";
             break;
         case Diamonds:
-            return @"Diamond";
+            return @"diamond";
             break;
         case Clubs:
-            return @"Club";
+            return @"club";
             break;
         default:
             return nil;
@@ -93,7 +91,7 @@
 
 -(NSString*) getCardPointString{
     
-    switch (_cardValue) {
+    switch (cardValue) {
         case 1:
             return @"Ace";
             break;
@@ -107,14 +105,14 @@
             return @"King";
             break;
         default:
-            return [NSString stringWithFormat:@"%ld", (long)_cardValue];
+            return [NSString stringWithFormat:@"%ld", (long)cardValue];
             break;
     }
     
 }
 
 -(NSString *) filename{
-    if (_cardFlipped==YES)
+    if (cardFlipped==YES)
         return @"closed.png";
     else
         return [NSString stringWithFormat:@"%@%02ld.png", [self getCardSuit], (long)[self cardValue]];

@@ -27,31 +27,24 @@
 @synthesize NewDealButton = _NewDealButton;
 @synthesize EveryView =_EveryView;
 
-- (void)viewDidLoad
-{
+- (void)viewDidLoad{
     [super viewDidLoad];
-    
-    _EveryView = [[NSMutableArray alloc] initWithCapacity:5];
-    
     // Do any additional setup after loading the view, typically from a nib.
-    [[GameModel getGameModel]  addObserver:self forKeyPath:@"dealer"
-                                             options:NSKeyValueObservingOptionNew context:NULL];
-    [[GameModel getGameModel]  addObserver:self forKeyPath:@"player"
-                                             options:NSKeyValueObservingOptionNew context:NULL];
-    [[GameModel getGameModel]  addObserver:self forKeyPath:@"totalPlays"
-                                             options:NSKeyValueObservingOptionNew context:NULL];
     
-    [[GameModel getGameModel] initializeRound];
-
+    GameModel *game = [[GameModel alloc] init];
+    
+    [game initializeRound];
+    
+    [self showHand:game.dealer];
+   // [self showHand:game.player];
 }
 
-- (void)didReceiveMemoryWarning
-{
+- (void)didReceiveMemoryWarning{
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 
-- (IBAction)HitCard:(id)sender {
+/*- (IBAction)HitCard:(id)sender{
     [_NewDealButton setEnabled:NO];
     
     [[GameModel getGameModel] playerHits];
@@ -86,6 +79,7 @@
     
     [[GameModel getGameModel] playerSplits];
 }
+ 
 
 - (IBAction)NewDeal:(id)sender {
     [_HitButton setEnabled:YES];
@@ -106,16 +100,40 @@
     
     [[GameModel getGameModel] playerSplits];
 }
+ */
 
--(void) placeHand:(Hand *)hand atYPos:(NSInteger) yPos;
-{
+
+-(void) showHand:(Hand *)hand{
+    
+    int ypos = 180;
+    
+    int numOfCards = [hand numOfCards];
+    
+    for (int i=0; i< numOfCards ; i++) {
+        
+        Card *card = [hand getCard:i];
+        
+        // UIImage  *cardImage = [ UIImage imageNamed:@"heart08.gif"];
+        UIImage  *cardImage = [ UIImage imageNamed:[card filename]];
+        
+        NSLog(@"Reading card file: %@", [card filename]);
+        UIImageView *imageView=[[UIImageView alloc] initWithImage:cardImage];
+        CGRect arect = CGRectMake( (i*40)+20, ypos, 71, 96);
+        imageView.frame = arect;
+        
+        [self.view addSubview:imageView];
+    }
+    
+}
+
+/*-(void) placeHand:(Hand *)hand atYPos:(NSInteger) yPos{
     for (int i=0; i< [hand numOfCards] ; i++) {
         Card *card = [hand getCard:i];
         
         UIImage  *cardImage = [ UIImage imageNamed:[card filename]];
         
         UIImageView *imageView=[[UIImageView alloc] initWithImage:cardImage];
-        CGRect arect = CGRectMake( (i*40)+20, yPos, 71, 96);
+        CGRect arect = CGRectMake( (i*40)+20, ypos, 71, 96);
         imageView.frame = arect;
         
         [_EveryView addObject:imageView];
@@ -158,6 +176,6 @@
         }
     
 }
-
+*/
 
 @end
