@@ -56,14 +56,14 @@
                                 </items>
                             </toolbar>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Dealer Hand" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lZs-MK-EUw">
-                                <rect key="frame" x="112" y="129" width="96" height="21"/>
+                                <rect key="frame" x="83" y="129" width="194" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.80000001192092896" green="0.80000001192092896" blue="0.80000001192092896" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Player Hand" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zoc-bk-XN1">
-                                <rect key="frame" x="111" y="489" width="99" height="22"/>
+                                <rect key="frame" x="88" y="489" width="189" height="22"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.80000001192092896" green="0.80000001192092896" blue="0.80000001192092896" alpha="1" colorSpace="calibratedRGB"/>
@@ -80,9 +80,11 @@
                         <color key="backgroundColor" red="0.50196081399917603" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                     <connections>
+                        <outlet property="DealerLabel" destination="lZs-MK-EUw" id="XBe-RE-Si7"/>
                         <outlet property="DoubleButton" destination="Ldm-fJ-He9" id="a24-4a-X71"/>
                         <outlet property="HitButton" destination="yGk-ty-Cbp" id="oBu-ZJ-WcS"/>
                         <outlet property="NewDealButton" destination="EM1-tq-n7c" id="hwr-eF-vpt"/>
+                        <outlet property="PlayerLabel" destination="Zoc-bk-XN1" id="ts4-7w-Lvo"/>
                         <outlet property="SplitButton" destination="Skj-mO-sZ3" id="JJQ-Pd-pZN"/>
                     </connections>
                 </viewController>

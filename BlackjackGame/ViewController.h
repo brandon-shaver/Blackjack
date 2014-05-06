@@ -9,6 +9,10 @@
 #import <UIKit/UIKit.h>
 
 @interface ViewController : UIViewController
+
+@property (weak, nonatomic) IBOutlet UILabel *DealerLabel;
+@property (weak, nonatomic) IBOutlet UILabel *PlayerLabel;
+
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *HitButton;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *StandButton;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *DoubleButton;
