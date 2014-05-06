@@ -21,6 +21,7 @@
 		8C51A1D419186E630078D4A9 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C51A1B619186E630078D4A9 /* UIKit.framework */; };
 		8C51A1DC19186E630078D4A9 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8C51A1DA19186E630078D4A9 /* InfoPlist.strings */; };
 		8C51A1DE19186E630078D4A9 /* BlackjackGameTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C51A1DD19186E630078D4A9 /* BlackjackGameTests.m */; };
+		8C51A1E9191879CB0078D4A9 /* Card.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C51A1E8191879CB0078D4A9 /* Card.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +54,8 @@
 		8C51A1D919186E630078D4A9 /* BlackjackGameTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "BlackjackGameTests-Info.plist"; sourceTree = "<group>"; };
 		8C51A1DB19186E630078D4A9 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		8C51A1DD19186E630078D4A9 /* BlackjackGameTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BlackjackGameTests.m; sourceTree = "<group>"; };
+		8C51A1E7191879CB0078D4A9 /* Card.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Card.h; path = ../Card.h; sourceTree = "<group>"; };
+		8C51A1E8191879CB0078D4A9 /* Card.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Card.m; path = ../Card.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,6 +115,8 @@
 		8C51A1B819186E630078D4A9 /* BlackjackGame */ = {
 			isa = PBXGroup;
 			children = (
+				8C51A1E7191879CB0078D4A9 /* Card.h */,
+				8C51A1E8191879CB0078D4A9 /* Card.m */,
 				8C51A1C119186E630078D4A9 /* AppDelegate.h */,
 				8C51A1C219186E630078D4A9 /* AppDelegate.m */,
 				8C51A1C419186E630078D4A9 /* Main.storyboard */,
@@ -252,6 +257,7 @@
 				8C51A1C919186E630078D4A9 /* ViewController.m in Sources */,
 				8C51A1C319186E630078D4A9 /* AppDelegate.m in Sources */,
 				8C51A1BF19186E630078D4A9 /* main.m in Sources */,
+				8C51A1E9191879CB0078D4A9 /* Card.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
