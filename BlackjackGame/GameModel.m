@@ -15,7 +15,7 @@
 @synthesize theDeck;
 @synthesize totalPlays;
 
-static GameModel* gameModel = nil;
+static GameModel* game = nil;
 
 /*
  
@@ -44,10 +44,19 @@ static GameModel* gameModel = nil;
  */
 -(void) initializeRound{
     
-    [player addCard:[theDeck draw]];
-    [dealer addCard:[theDeck draw]];
-    [player addCard:[theDeck draw]];
-    [dealer addCard:[theDeck draw]];
+    [self playerDraw];
+    [self dealerDraw];
+    
+}
+
++(GameModel *)getGameModel{
+    
+    if (game == nil){
+        
+        game = [[GameModel alloc] init];
+    }
+    
+    return game;
     
 }
 
@@ -77,7 +86,19 @@ static GameModel* gameModel = nil;
 
 }
 
--(void)dealerHandDraws{
+-(void)playerDraw{
+    
+    [self willChangeValueForKey:@"player"];
+    [player addCard:[theDeck draw]];
+    [self didChangeValueForKey:@"player"];
+    
+}
+
+-(void)dealerDraw{
+    
+    [self willChangeValueForKey:@"dealer"];
+    [dealer addCard:[theDeck draw]];
+    [self didChangeValueForKey:@"dealer"];
 
 }
 

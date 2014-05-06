@@ -1,0 +1,110 @@
+//
+//  Card.m
+//  BlackjackGame
+//
+//  Created by Shaver, Brandon L on 5/5/14.
+//  Copyright (c) 2014 Shaver, Brandon L. All rights reserved.
+//
+
+#import "Card.h"
+
+@implementation Card
+
+@synthesize cardValue;
+@synthesize cardSuit;
+@synthesize cardFlipped;
+
+/*
+ 
+ **
+ ** Initializes a card with a number and suite
+ 
+ */
+
+-(id) initCard:(int)cNumber suit:(Suit)cSuit{
+    
+    if (self = [super init]){ //object is NSObject
+        
+        cardValue = cNumber; //assign card number
+        cardSuit = cSuit; //assign card suite
+        cardFlipped = NO;
+        
+    }
+    return self;
+}
+
+
+/*
+ 
+ **
+ ** Returns the card point value
+ 
+ */
+
+-(NSInteger) getCardPoint{
+    
+    if (cardValue == 1){ //ace is 1 or 11
+        return 11;
+    }else if (cardValue >= 10){
+        return 10;
+    }else{
+        return cardValue; //card is less than 10
+    }
+}
+
+/*
+ 
+ **
+ ** Returns the card suit
+ 
+ */
+
+-(NSString *) getCardSuit{
+    
+    if (cardSuit == Spades){
+        return @"Spades";
+    }else if (cardSuit == Clubs){
+        return @"Clubs";
+    }else if (cardSuit == Hearts){
+        return @"Hearts";
+    }else{
+        return @"Diamonds";
+    }
+}
+
+/*
+ 
+ ** Returns card point number as a NSString
+ **
+ 
+ */
+
+-(NSString*) getCardPointString{
+    
+    if (cardValue == 1){
+        return @"Ace";
+    }else if (cardValue == 11){
+        return @"Jack";
+    }else if (cardValue == 12){
+        return @"Queen";
+    }else if (cardValue == 13){
+        return @"King";
+    }else{
+        return [NSString stringWithFormat: @"%d", cardValue];
+    }
+    
+}
+
+-(NSString *) filename{
+    if (cardFlipped==YES)
+        return @"closed.png";
+    else
+        return [NSString stringWithFormat:@"%@%02d.png", [self getCardSuit], [self cardValue]];
+}
+
+-(NSString *) description {
+    return [NSString stringWithFormat:@"%@ %@ (pipValue = %d)", [self getCardSuit], [self getCardPointString], [self getCardPoint]];
+}
+
+
+@end

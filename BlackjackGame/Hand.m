@@ -29,8 +29,8 @@
     
 }
 
--(NSInteger) numOfCards {
-    return ([self.cardsInHand count]);
+-(int) numOfCards {
+    return (int)([self.cardsInHand count]);
 }
 
 /*
