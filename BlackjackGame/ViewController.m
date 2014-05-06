@@ -123,14 +123,14 @@
 
 -(void) placeDealerHand:(Hand *)hand;
 {
-    [self showHand:hand atYPos:80];
-    _DealerLabel.text = [NSString stringWithFormat:@"Dealer (%d)",[hand getPipValue]];
+    [self placeHand:hand atYPos:80];
+    _DealerLabel.text = [NSString stringWithFormat:@"Dealer (%d)",[hand getCardPoint]];
 }
 
 -(void) placePlayerHand:(Hand *)hand;
 {
-    [self showHand:hand atYPos:290];
-    _PlayerLabel.text = [NSString stringWithFormat:@"Player (%d)",[hand getPipValue]];
+    [self placeHand:hand atYPos:290];
+    _PlayerLabel.text = [NSString stringWithFormat:@"Player (%d)",[hand getCardPoint]];
     
 }
 
