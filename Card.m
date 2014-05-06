@@ -12,6 +12,7 @@
 
 @synthesize cardValue;
 @synthesize cardSuit;
+@synthesize cardFlipped;
 
 /*
  
@@ -26,6 +27,7 @@
         
         cardValue = cNumber; //assign card number
         cardSuit = cSuit; //assign card suite
+        cardFlipped = NO;
         
     }
     return self;
@@ -92,7 +94,17 @@
     }
     
 }
- 
- 
+
+-(NSString *) filename{
+    if (cardFlipped==YES)
+        return @"closed.png";
+    else
+        return [NSString stringWithFormat:@"%@%02d.png", [self getCardSuit], [self cardValue]];
+}
+
+-(NSString *) description {
+    return [NSString stringWithFormat:@"%@ %@ (pipValue = %d)", [self getCardSuit], [self getCardPointString], [self getCardPoint]];
+}
+
 
 @end

@@ -16,10 +16,11 @@ typedef enum{ Diamonds, Hearts, Spades, Clubs } Suit;
 
 @property NSInteger cardValue;
 @property Suit cardSuit;
+@property BOOL cardFlipped;
 
 -(id) initCard: (int) cNumber suit:(Suit) cSuit;
 -(NSInteger) getCardPoint;
-
+-(NSString *) filename;
 
 
 @end

@@ -105,8 +105,8 @@
 
 -(void) placeHand:(Hand *)hand atYPos:(NSInteger) yPos;
 {
-    for (int i=0; i< [hand countCards] ; i++) {
-        Card *card = [hand getCardAtIndex:i];
+    for (int i=0; i< [hand numOfCards] ; i++) {
+        Card *card = [hand getCard:i];
         
         UIImage  *cardImage = [ UIImage imageNamed:[card filename]];
         
