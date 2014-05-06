@@ -8,7 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
+@interface ViewController : UIViewController{
+    NSMutableArray *EveryView;
+}
 
 @property (weak, nonatomic) IBOutlet UILabel *DealerLabel;
 @property (weak, nonatomic) IBOutlet UILabel *PlayerLabel;
@@ -18,6 +20,7 @@
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *DoubleButton;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *SplitButton;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *NewDealButton;
+@property NSMutableArray *EveryView;
 
 - (IBAction)HitCard:(id)sender;
 - (IBAction)StandHand:(id)sender;
