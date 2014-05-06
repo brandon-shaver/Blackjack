@@ -17,7 +17,7 @@ typedef enum{ Diamonds, Hearts, Spades, Clubs } Suit;
 @property NSInteger cardValue;
 @property Suit cardSuit;
 
--(id) initCard: (NSInteger*) cNumber suit:(Suit) cSuit;
+-(id) initCard: (int) cNumber suit:(Suit) cSuit;
 -(NSInteger) getCardPoint;
 
 
