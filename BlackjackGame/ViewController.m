@@ -26,4 +26,18 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (IBAction)HitCard:(id)sender {
+}
+
+- (IBAction)StandHand:(id)sender {
+}
+
+- (IBAction)DoubleHand:(id)sender {
+}
+
+- (IBAction)SplitHand:(id)sender {
+}
+
+- (IBAction)NewDeal:(id)sender {
+}
 @end
