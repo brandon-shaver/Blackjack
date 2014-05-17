@@ -9,12 +9,14 @@
 #import <Foundation/Foundation.h>
 
 #import "Deck.h"
+#import "Card.h"
 #import "Hand.h"
+#import "ViewController.h"
 
 typedef enum {
     Player,
     Dealer,
-    Draw
+    Push
 }   Winner;
 
 @interface GameModel : NSObject{
@@ -33,13 +35,15 @@ typedef enum {
 @property int totalPlays;
 
 -(void) initializeRound;
-/*
+
 -(void) playerHits;
 -(void) playerStands;
 -(void) playerDoubles;
 -(void) playerSplits;
 -(void) dealNewHand;
-*/
+
++(NSString*) getWinner: (Winner) winner;
+
 
 +(GameModel *)getGameModel;
 

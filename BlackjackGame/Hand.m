@@ -11,7 +11,7 @@
 
 @implementation Hand
 
-@synthesize handClosed=_handClosed;
+@synthesize closedHand = _closedHand;
 /*
  
  ** Creates a new hand of size 2
@@ -22,7 +22,7 @@
     
     if (self = [super init]){
         self.cardsInHand = [[NSMutableArray alloc] initWithCapacity:2];
-        _handClosed = NO;
+        _closedHand = NO;
     }
     
     return (self);
@@ -41,7 +41,7 @@
  */
 -(void) addCard: (Card *)card{
     
-    if ((_handClosed==NO) | ( [self numOfCards]==0))
+    if ((_closedHand==NO) || ( [self numOfCards]==1))
     {
         [self.cardsInHand addObject:card];
     }
@@ -93,19 +93,19 @@
     return ([self.cardsInHand objectAtIndex:index]);
 }
 
--(BOOL) handClosed
+-(BOOL) closedHand
 {
-    return _handClosed;
+    return _closedHand;
 }
 
--(void) setHandClosed:(BOOL)aHandClosed
+-(void) setClosedHand:(BOOL)aClosedHand
 {
     
-    if (aHandClosed == NO) {
-        for( Card *c in self.cardsInHand)
-            c.cardFlipped = NO;
+    if (aClosedHand == NO) {
+        for( Card *current in self.cardsInHand)
+            current.cardFlipped = NO;
     }
-    _handClosed = aHandClosed;
+    _closedHand = aClosedHand;
 }
 
 

@@ -16,10 +16,9 @@
     
 }
 
-
-
 @property NSMutableArray *cardsInHand;
-@property BOOL handClosed;
+
+@property BOOL closedHand;
 
 
 -(void) addCard: (Card *)card;

@@ -31,14 +31,20 @@
     [super viewDidLoad];
     
     
+    UIAlertView *welcome = [[UIAlertView alloc] initWithTitle:@"Welcome to Blackjack!" message:@"The goal is to get the highest score possible without going over 21. Aces can be 1 or 11, face cards have a value of 10." delegate:self cancelButtonTitle:@"Let's Play!" otherButtonTitles:nil];
+    
+    [welcome show];
+    
+    _EveryView = [[NSMutableArray alloc] initWithCapacity:5];
+    
     [[GameModel getGameModel] addObserver:self forKeyPath:@"dealer" options:NSKeyValueObservingOptionNew context:NULL];
     
     [[GameModel getGameModel] addObserver:self forKeyPath:@"player" options:NSKeyValueObservingOptionNew context:NULL];
     
+    [[GameModel getGameModel] addObserver:self forKeyPath:@"totalPlays" options:NSKeyValueObservingOptionNew context:NULL];
+    
     [[GameModel getGameModel] initializeRound];
      
-    
-   // [self showHand:game.player];
 }
 
 - (void)didReceiveMemoryWarning{
@@ -46,7 +52,7 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*- (IBAction)HitCard:(id)sender{
+- (IBAction)HitCard:(id)sender{
     [_NewDealButton setEnabled:NO];
     
     [[GameModel getGameModel] playerHits];
@@ -75,7 +81,7 @@
 - (IBAction)SplitHand:(id)sender {
     [_HitButton setEnabled:YES];
     [_StandButton setEnabled:YES];
-    [_DoubleButton setEnabled:YES];
+    [_DoubleButton setEnabled:NO];
     [_SplitButton setEnabled:NO];
     [_NewDealButton setEnabled:NO];
     
@@ -86,8 +92,17 @@
 - (IBAction)NewDeal:(id)sender {
     [_HitButton setEnabled:YES];
     [_StandButton setEnabled:YES];
-    [_DoubleButton setEnabled:YES];
+    [_DoubleButton setEnabled:NO];
     [_SplitButton setEnabled:NO];
+    [_NewDealButton setEnabled:NO];
+    
+    //Reset the model to beginning
+    for (UIView *view in _EveryView) {
+        [view removeFromSuperview];
+    }
+    [_EveryView removeAllObjects];
+    [_DealerLabel setText:@"Dealer"];
+    [_PlayerLabel setText:@"Player"];
     [_NewDealButton setEnabled:NO];
     
     [[GameModel getGameModel] dealNewHand];
@@ -100,12 +115,11 @@
     [_SplitButton setEnabled:NO];
     [_NewDealButton setEnabled:YES];
     
-    [[GameModel getGameModel] playerSplits];
 }
- */
+ 
 
 
--(void) showHand:(Hand *)hand atYPos:(int) yPos{
+-(void) placeHands:(Hand *)hand atYPos:(int) yPos{
     
     
     int numOfCards = [hand numOfCards];
@@ -120,9 +134,10 @@
         NSLog(@"Reading card file: %@", [card filename]);
         
         UIImageView *imageView=[[UIImageView alloc] initWithImage:cardImage];
-        CGRect arect = CGRectMake( (i*40)+20, yPos, 71, 96);
+        CGRect arect = CGRectMake( (i*40)+100, yPos, 71, 96);
         imageView.frame = arect;
         
+        [_EveryView addObject:imageView];
         [self.view addSubview:imageView];
     }
     
@@ -131,17 +146,16 @@
 
 -(void) placeDealerHand:(Hand *)hand;
 {
-    [self showHand:hand atYPos:180];
+    [self placeHands:hand atYPos:180];
     _DealerLabel.text = [NSString stringWithFormat:@"Dealer (%ld)",(long)[hand getHandPoints]];
 }
 
 -(void) placePlayerHand:(Hand *)hand;
 {
-    [self showHand:hand atYPos:350];
+    [self placeHands:hand atYPos:350];
     _PlayerLabel.text = [NSString stringWithFormat:@"Player (%ld)",(long)[hand getHandPoints]];
     
 }
-
 
 - (void)observeValueForKeyPath:(NSString *)keyPath
                       ofObject:(id)object
@@ -153,9 +167,17 @@
         
         [self placeDealerHand: (Hand *)[object dealer]];
         
-    }else if ([keyPath isEqualToString:@"player"]){
+    }
+    
+    else if ([keyPath isEqualToString:@"player"]){
         
         [self placePlayerHand: (Hand *)[object player]];
+        
+    }
+    
+    else if ([keyPath isEqualToString:@"totalPlays"]){
+        
+        [self gameOver];
         
     }
     
